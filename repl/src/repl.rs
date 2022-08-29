@@ -138,7 +138,7 @@ where
     }
 
     /// Execute the REPL, prompting for user input and processing the results
-    pub async fn repl(&mut self) -> Result<()> {
+    pub async fn process(&mut self) -> Result<()> {
         loop {
             let readline = self.editor.readline(&self.prompt);
             match readline {
@@ -150,7 +150,7 @@ where
                     }
                     match command.to_lowercase().as_ref() {
                         "" => {} // Loop, someone hit enter needlessly
-                        "exit" | "quit" => break,
+                        maybe_quit if self.command_processor.is_quit(maybe_quit) => break, // check for quit/exit
                         _ => {
                             self.process_command(line).await?;
                         }

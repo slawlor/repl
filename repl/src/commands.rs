@@ -13,5 +13,18 @@ pub trait ReplCommandProcessor<C>: std::fmt::Debug
 where
     C: clap::Parser,
 {
+    /// Process the supplied command which is a clap::Parser structure
     async fn process_command(&self, command: C) -> Result<()>;
+
+    /// Determine if the supplied command is a "quit" operation. This will be
+    /// formatted into a trimmed string of lowercase letters. Example matching might
+    /// check (in English)
+    ///
+    /// ```rust
+    /// match command {
+    ///     "quit" | "exit" => true,
+    ///     _ => false,
+    /// }
+    /// ```
+    fn is_quit(&self, command: &str) -> bool;
 }

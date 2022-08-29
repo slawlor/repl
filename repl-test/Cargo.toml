@@ -1,19 +1,18 @@
 [package]
-name = "repl_test"
+name = "repl-test"
+default_run = "repl_test"
 version = "0.0.0"
 authors = ["Sean Lawlor <slawlor@slawlor.com>"]
 description = "Test utility for Repl crate"
 license = "MIT"
 edition = "2018"
-keywords = ["repl"]
-repository = "https://github.com/slawlor/repl"
-readme = "../README.md"
 publish = false
 
 # [features]
 
 [dependencies]
 anyhow = { version = "1", features = ["backtrace"] }
+async-trait = "0.1"
 clap = { version = "3", features = ["derive"] }
 colored = "2"
 dirs = "4"
