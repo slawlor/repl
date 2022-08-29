@@ -21,4 +21,4 @@ rustyline = "10"
 thread-id = "3"
 tokio = { version = "1.10", features = ["full"] }
 
-repl = { path = "../repl", features = ["async"] }
+rustyrepl = { path = "../rustyrepl", features = ["async"] }

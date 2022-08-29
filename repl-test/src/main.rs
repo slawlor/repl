@@ -14,6 +14,7 @@
 
 use anyhow::Result;
 use clap::{Parser, Subcommand};
+use rustyrepl::{Repl, ReplCommandProcessor};
 
 mod console_log;
 
@@ -39,7 +40,7 @@ pub struct Cli {
 pub struct CliProcessor {}
 
 #[async_trait::async_trait]
-impl repl::ReplCommandProcessor<Cli> for CliProcessor {
+impl ReplCommandProcessor<Cli> for CliProcessor {
     fn is_quit(&self, command: &str) -> bool {
         matches!(command, "quit" | "exit")
     }
@@ -62,8 +63,8 @@ async fn main() -> Result<()> {
         .map(|()| log::set_max_level(LOGGER.level.to_level_filter()))
         .expect("Failed to set up logging");
 
-    let processor: Box<dyn repl::ReplCommandProcessor<Cli>> = Box::new(CliProcessor {});
+    let processor: Box<dyn ReplCommandProcessor<Cli>> = Box::new(CliProcessor {});
 
-    let mut repl = repl::Repl::<Cli>::new(processor, None, Some(">>".to_string()))?;
+    let mut repl = Repl::<Cli>::new(processor, None, Some(">>".to_string()))?;
     repl.process().await
 }
