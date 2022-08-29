@@ -94,7 +94,14 @@ where
         cmd_parts.extend(line.split(' ').collect::<Vec<_>>().iter().copied());
         match C::try_parse_from(cmd_parts.into_iter()) {
             Ok(cli) => {
-                self.command_processor.process_command(cli).await?;
+                #[cfg(feature = "async")]
+                {
+                    self.command_processor.process_command(cli).await?;
+                }
+                #[cfg(not(feature = "async"))]
+                {
+                    self.command_processor.process_command(cli)?;
+                }
             }
             Err(clap_err) => match clap::Error::kind(&clap_err) {
                 clap::ErrorKind::DisplayHelp | clap::ErrorKind::DisplayVersion => {

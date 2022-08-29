@@ -8,8 +8,6 @@ license = "MIT"
 edition = "2018"
 publish = false
 
-# [features]
-
 [dependencies]
 anyhow = { version = "1", features = ["backtrace"] }
 async-trait = "0.1"
@@ -23,4 +21,4 @@ rustyline = "10"
 thread-id = "3"
 tokio = { version = "1.10", features = ["full"] }
 
-repl = { path = "../repl" }
+repl = { path = "../repl", features = ["async"] }

@@ -6,9 +6,9 @@
 /// Represents a processor of REPL commands from a
 /// [crate::repl::Repl<C>]
 use anyhow::Result;
-use async_trait::async_trait;
 
-#[async_trait]
+#[cfg(feature = "async")]
+#[async_trait::async_trait]
 pub trait ReplCommandProcessor<C>: std::fmt::Debug
 where
     C: clap::Parser,
@@ -20,8 +20,30 @@ where
     /// formatted into a trimmed string of lowercase letters. Example matching might
     /// check (in English)
     ///
-    /// ```rust
-    /// matches!(command, "quit" | "exit")
+    /// ```
+    /// fn is_quit(command: &str) -> bool {
+    ///  matches!(command, "quit" | "exit")
+    /// }
+    /// ```
+    fn is_quit(&self, command: &str) -> bool;
+}
+
+#[cfg(not(feature = "async"))]
+pub trait ReplCommandProcessor<C>: std::fmt::Debug
+where
+    C: clap::Parser,
+{
+    /// Process the supplied command which is a clap::Parser structure
+    fn process_command(&self, command: C) -> Result<()>;
+
+    /// Determine if the supplied command is a "quit" operation. This will be
+    /// formatted into a trimmed string of lowercase letters. Example matching might
+    /// check (in English)
+    ///
+    /// ```
+    /// fn is_quit(command: &str) -> bool {
+    ///  matches!(command, "quit" | "exit")
+    /// }
     /// ```
     fn is_quit(&self, command: &str) -> bool;
 }
