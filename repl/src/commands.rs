@@ -21,10 +21,7 @@ where
     /// check (in English)
     ///
     /// ```rust
-    /// match command {
-    ///     "quit" | "exit" => true,
-    ///     _ => false,
-    /// }
+    /// matches!(command, "quit" | "exit")
     /// ```
     fn is_quit(&self, command: &str) -> bool;
 }

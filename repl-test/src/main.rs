@@ -41,10 +41,7 @@ pub struct CliProcessor {}
 #[async_trait::async_trait]
 impl repl::ReplCommandProcessor<Cli> for CliProcessor {
     fn is_quit(&self, command: &str) -> bool {
-        match command {
-            "quit" | "exit" => true,
-            _ => false
-        }
+        matches!(command, "quit" | "exit")
     }
 
     async fn process_command(&self, command: Cli) -> Result<()> {
@@ -66,7 +63,6 @@ async fn main() -> Result<()> {
         .expect("Failed to set up logging");
 
     let processor: Box<dyn repl::ReplCommandProcessor<Cli>> = Box::new(CliProcessor {});
-
 
     let mut repl = repl::Repl::<Cli>::new(processor, None, Some(">>".to_string()))?;
     repl.process().await
