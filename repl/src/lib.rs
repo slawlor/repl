@@ -16,5 +16,5 @@
 mod commands;
 mod repl;
 
-pub use commands::ReplCommandProcessor;
-pub use repl::Repl;
+pub use crate::commands::ReplCommandProcessor;
+pub use crate::repl::Repl;
