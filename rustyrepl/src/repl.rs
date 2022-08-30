@@ -15,7 +15,7 @@ const DEFAULT_HISTORY_FILE_NAME: &str = ".repl_history";
 #[cfg(not(feature = "async"))]
 macro_rules! get_specific_processing_call {
     ($self:ident, $cli:expr) => {
-        $self.command_processor.process_command(cli)?;
+        $self.command_processor.process_command($cli)?;
     };
 }
 
