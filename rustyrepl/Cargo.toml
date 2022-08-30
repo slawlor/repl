@@ -1,5 +1,5 @@
 [package]
-name = "repl"
+name = "rustyrepl"
 version = "0.1.0"
 authors = ["Sean Lawlor <slawlor@slawlor.com>"]
 description = "A Rust read, evaluate, print, loop (REPL) utility "
@@ -9,18 +9,21 @@ keywords = ["repl"]
 repository = "https://github.com/slawlor/repl"
 readme = "../README.md"
 
-# [features]
+[features]
+async = ["async-trait"]
+default = []
 
 [dependencies]
+# Required dependencies
 anyhow = { version = "1", features = ["backtrace"] }
-async-trait = "0.1"
 clap = { version = "3", features = ["derive"] }
-colored = "2"
 dirs = "4"
 log = { version = "0.4.8", features = ["kv_unstable"] }
-multi_log = "0.1"
-once_cell = "1"
 rustyline = "10"
-thread-id = "3"
-tokio = { version = "1.10", features = ["full"] }
 thiserror = "1"
+
+# Optional dependencies
+async-trait = { version = "0.1", optional = true }
+
+[dev-dependencies]
+tokio = { version = "1.10", features = ["full"] }

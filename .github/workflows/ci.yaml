@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - main
-    pull_request:
-      types: [opened, reopened, synchronize]
+  pull_request:
+    types: [opened, edited, reopened, synchronize, ready_for_review]
 
 jobs:
   test:
@@ -22,10 +22,15 @@ jobs:
         with:
           toolchain: ${{matrix.toolchain}}
           override: true
-      - name: Run tests
+      - name: Run default test suite
         uses: actions-rs/cargo@v1
         with:
           command: test
+      - name: Run ReplyRepl async tests
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --package rustyrepl --features async
 
   clippy:
     name: Clippy
