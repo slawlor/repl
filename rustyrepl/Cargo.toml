@@ -1,6 +1,6 @@
 [package]
 name = "rustyrepl"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Sean Lawlor <slawlor@slawlor.com>"]
 description = "A Rust read, evaluate, print, loop (REPL) utility "
 license = "MIT"
