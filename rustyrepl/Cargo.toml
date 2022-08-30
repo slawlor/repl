@@ -24,3 +24,6 @@ thiserror = "1"
 
 # Optional dependencies
 async-trait = { version = "0.1", optional = true }
+
+[dev-dependencies]
+tokio = { version = "1.10", features = ["full"] }

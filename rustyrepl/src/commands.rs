@@ -8,7 +8,7 @@
 use anyhow::Result;
 
 #[cfg(feature = "async")]
-#[async_trait::async_trait]
+#[cfg_attr(feature = "async", async_trait::async_trait)]
 pub trait ReplCommandProcessor<C>: std::fmt::Debug
 where
     C: clap::Parser,

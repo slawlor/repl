@@ -64,7 +64,10 @@ async fn main() -> Result<()> {
         .expect("Failed to set up logging");
 
     let processor: Box<dyn ReplCommandProcessor<Cli>> = Box::new(CliProcessor {});
+    // create a dummy test history file
+    let history_file = ".test_history".to_string();
+    let some_history_file = Some(history_file);
 
-    let mut repl = Repl::<Cli>::new(processor, None, Some(">>".to_string()))?;
+    let mut repl = Repl::<Cli>::new(processor, some_history_file, Some(">> ".to_string()))?;
     repl.process().await
 }
