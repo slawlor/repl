@@ -29,7 +29,8 @@ jobs:
       - name: Run ReplyRepl async tests
         uses: actions-rs/cargo@v1
         with:
-          command: test -p rustyrepl --features async
+          command: test
+          args: --package rustyrepl --features async
 
   clippy:
     name: Clippy
