@@ -144,7 +144,7 @@ where
 
     /// Retrieve the rustyline editor with history loaded (if possible)
     fn get_editor(history: &Option<PathBuf>) -> Result<Editor<()>> {
-        let mut rl = Editor::<()>::new()?;
+        let mut rl = Editor::<()>::new();
 
         if let Some(history_file) = history {
             match rl.load_history(history_file.as_os_str()) {

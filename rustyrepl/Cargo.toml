@@ -1,6 +1,6 @@
 [package]
 name = "rustyrepl"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Sean Lawlor <slawlor@slawlor.com>"]
 description = "A Rust read, evaluate, print, loop (REPL) utility "
 license = "MIT"
@@ -19,7 +19,7 @@ anyhow = { version = "1", features = ["backtrace"] }
 clap = { version = "3", features = ["derive"] }
 dirs = "4"
 log = { version = "0.4.8", features = ["kv_unstable"] }
-rustyline = "10"
+rustyline = "7"
 thiserror = "1"
 
 # Optional dependencies
