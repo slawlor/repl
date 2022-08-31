@@ -1,5 +1,11 @@
+
 # rustyrepl
 The easy Rust Read-Evaluate-Print-Loop (REPL) utility crate
+
+[<img alt="github" src="https://img.shields.io/badge/github-slawlor/repl-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/slawlor/repl)
+[<img alt="crates.io" src="https://img.shields.io/crates/v/rustyrepl.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/rustyrepl)
+[<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-rustyrepl-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/rustyrepl)
+[<img alt="build status" src="https://img.shields.io/github/workflow/status/slawlor/repl/CI/main?style=for-the-badge" height="20">](https://github.com/slawlor/repl/actions?query=branch%3Amain)
 
 ## About
 
