@@ -78,5 +78,8 @@
 mod commands;
 mod repl;
 
+#[cfg(test)]
+pub(crate) mod common_test;
+
 pub use crate::commands::ReplCommandProcessor;
 pub use crate::repl::Repl;
