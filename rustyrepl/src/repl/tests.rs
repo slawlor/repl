@@ -12,7 +12,7 @@ use std::path::{Path, PathBuf};
 #[derive(Parser, Debug)]
 struct TestCli {}
 
-type TestRepl = Repl::<TestCli>;
+type TestRepl = Repl<TestCli>;
 
 #[test]
 fn test_history_path_parsing() -> Result<()> {
@@ -36,11 +36,15 @@ fn test_history_path_parsing() -> Result<()> {
 
     let relative_path_to_real_file = TestRepl::get_history_file_path(Some(real_file.clone()));
     tempfile.close()?;
-    assert_eq!(Path::new(&real_file).to_path_buf(), relative_path_to_real_file.unwrap());
+    assert_eq!(
+        Path::new(&real_file).to_path_buf(),
+        relative_path_to_real_file.unwrap()
+    );
 
     // ========= A directory ========= //
     let mut tempdir = tempfile::tempdir()?.into_path();
-    let directory_plus_default_filename = TestRepl::get_history_file_path(Some(tempdir.to_str().unwrap().to_string()));
+    let directory_plus_default_filename =
+        TestRepl::get_history_file_path(Some(tempdir.to_str().unwrap().to_string()));
     tempdir.push(super::DEFAULT_HISTORY_FILE_NAME);
     assert_eq!(tempdir, directory_plus_default_filename.unwrap());
 

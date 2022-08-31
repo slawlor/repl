@@ -126,7 +126,14 @@ where
         if let Some(history_file) = &history_file_name {
             let path = Path::new(history_file);
 
-            match (path.is_file(), path.is_dir(), path.is_absolute(), path.exists(), path.extension(), path.components()) {
+            match (
+                path.is_file(),
+                path.is_dir(),
+                path.is_absolute(),
+                path.exists(),
+                path.extension(),
+                path.components(),
+            ) {
                 (true, _, _, _, _, _) | (_, _, true, true, Some(_), _) => {
                     // is a file, and either exists on disk or is an absolute path to a file
                     Some(path.to_path_buf())
@@ -138,7 +145,7 @@ where
                     full_path.push(DEFAULT_HISTORY_FILE_NAME);
                     Some(full_path)
                 }
-                (_, _, _, _, Some(_), components) if components.clone().collect::<Vec<_>>().len() == 1 => {
+                (_, _, _, _, Some(_), components) if components.clone().count() == 1 => {
                     // there's some file extension and exactly 1 component to the path,
                     // so it's a file but doesn't exist on disk so we put it in the
                     // home folder (or at least try to)
@@ -147,8 +154,7 @@ where
                         home_dir
                     })
                 }
-                _ =>
-                    None
+                _ => None,
             }
         } else {
             debug!("REPL history disabled as no history file provided");
