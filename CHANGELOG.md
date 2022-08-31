@@ -1,6 +1,12 @@
 # Changelog
 
-## 0.1.3 (August 30, 2022)
+## 0.1.4 (August 31, 2022)
+
+* Cleanup licensing headers
+* Downgrade further the `dirs` crate dependency for easier compatability
+* Starting adding test coverage for CI
+
+## 0.1.3 (August 31, 2022)
 
 * More documentation cleanups + status badges on CI pipelines
 * Cleanup dependencies to remove `backtrace` feature of `anyhow`
