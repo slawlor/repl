@@ -29,7 +29,7 @@ pub enum Command {
     Test,
 }
 
-/// The general CLI, essentially a wrapper for the sub-commands [Commands]
+/// The general CLI, essentially a wrapper for the sub-commands [Command]
 #[derive(Parser, Clone, Debug)]
 pub struct Cli {
     #[clap(subcommand)]

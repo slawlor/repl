@@ -64,7 +64,8 @@ macro_rules! process_block {
                                         get_specific_processing_call!($self, cli);
                                     }
                                     Err(clap_err) => match clap::Error::kind(&clap_err) {
-                                        clap::ErrorKind::DisplayHelp | clap::ErrorKind::DisplayVersion => {
+
+                                        clap::error::ErrorKind::DisplayHelp | clap::error::ErrorKind::DisplayVersion => {
                                             println!("{}", clap_err);
                                         }
                                         _ => {
