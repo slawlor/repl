@@ -22,7 +22,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! rustyrepl = "0.1"
+//! rustyrepl = "0.2"
 //! ```
 //!
 //! Next:
@@ -39,7 +39,7 @@
 //!     Test,
 //! }
 //!
-//! /// The general CLI, essentially a wrapper for the sub-commands [Commands]
+//! /// The general CLI, essentially a wrapper for the sub-commands [Command]
 //! #[derive(Parser, Clone, Debug)]
 //! pub struct Cli {
 //!     #[clap(subcommand)]
@@ -71,7 +71,22 @@
 //!     let mut repl = Repl::<Cli>::new(processor, None, Some(">>".to_string()))?;
 //!     repl.process().await
 //! }
+//! ```
 //!
+//! This small program will startup up a REPL with the prompt ">>" which you can interact with
+//!
+//! ```text
+//! >> help
+//! The general CLI, essentially a wrapper for the sub-commands [Commands]
+//!
+//! Usage: repl-interface <COMMAND>
+//!
+//! Commands:
+//!   test  Execute a test command
+//!   help  Print this message or the help of the given subcommand(s)
+//!
+//! Options:
+//!   -h, --help  Print help
 //!
 //! ```
 

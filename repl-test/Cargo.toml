@@ -11,7 +11,7 @@ publish = false
 [dependencies]
 anyhow = { version = "1" }
 async-trait = "0.1"
-clap = { version = "3", features = ["derive"] }
+clap = { version = "4", features = ["derive"] }
 colored = "2"
 log = { version = "0.4.8", features = ["kv_unstable"] }
 multi_log = "0.1"
